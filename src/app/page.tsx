@@ -7,21 +7,6 @@ import { Globe } from "@/components/globe"
 
 const sections = [
   {
-    city: "San Francisco",
-    id: "san-francisco",
-    items: [
-      {
-        title: "Durate (YC F24)",
-        role: "Founding Engineer",
-        date: "Jan 2025 – Jun 2025",
-        bullets: [
-          "Built core product features across a React frontend and Apollo GraphQL backend, including an AI scheduling agent using the Vercel AI SDK.",
-          "Worked directly with founders on customer interviews and demos, then led a major codebase overhaul post-YC to improve maintainability and support rapid iteration.",
-        ],
-      },
-    ],
-  },
-  {
     city: "Houston",
     id: "houston",
     items: [
@@ -60,6 +45,7 @@ const sections = [
         title: "Advent International",
         role: "Software Developer Intern",
         date: "May 2023 – Aug 2023",
+        image: "/images/advent_1.jpeg",
         bullets: [
           "Employed Python and Pandas for in-depth due diligence analyses on five high-value companies (> $100M valuation). Insights contributed to acquisition of Zimmerman in a $1 billion USD deal.",
           "Integrated BLS and BEA APIs via scheduled CRON jobs to collect 10M+ data points, now informing the standard due diligence process.",
@@ -71,6 +57,22 @@ const sections = [
     city: "Los Angeles",
     id: "los-angeles",
     items: [
+      {
+        title: "Hack for LA",
+        role: "Open Source Developer",
+        date: "2020 – 2021",
+        bullets: [
+          "Contributed to civic tech projects as part of Hack for LA, a Code for America brigade building open-source tools to improve the lives of Los Angeles residents.",
+        ],
+      },
+      {
+        title: "World Health Organization",
+        role: "Developer",
+        date: "2020 – 2021",
+        bullets: [
+          "Contributed to open-source software projects supporting global public health initiatives during the COVID-19 pandemic.",
+        ],
+      },
       {
         title: "Santa Monica College",
         role: "Certificate in Cloud Computing — 4.0 GPA",
@@ -188,6 +190,26 @@ function PeripherySection() {
           periphery.so
           <span aria-hidden="true">&rarr;</span>
         </a>
+
+        <hr className="my-8 border-[#DBE2EF]" />
+
+        <div className="flex flex-col justify-between gap-1 sm:flex-row sm:items-baseline">
+          <div>
+            <h3 className="text-2xl font-bold text-[#112D4E]">Durate (YC F24)</h3>
+            <p className="text-sm text-[#3F72AF]">Founding Engineer</p>
+          </div>
+          <p className="text-sm text-[#3F72AF] whitespace-nowrap">
+            Jan 2025 – Jun 2025
+          </p>
+        </div>
+        <ul className="mt-3 space-y-2">
+          <li className="text-sm leading-relaxed text-[#112D4E]/80">
+            Built core product features across a React frontend and Apollo GraphQL backend, including an AI scheduling agent using the Vercel AI SDK.
+          </li>
+          <li className="text-sm leading-relaxed text-[#112D4E]/80">
+            Worked directly with founders on customer interviews and demos, then led a major codebase overhaul post-YC to improve maintainability and support rapid iteration.
+          </li>
+        </ul>
       </div>
     </FadeInSection>
   )
@@ -221,6 +243,17 @@ function Section({
                 {item.date}
               </p>
             </div>
+            {"image" in item && item.image && (
+              <div className="mt-4 overflow-hidden rounded-xl max-w-xs">
+                <Image
+                  src={item.image}
+                  alt={item.title}
+                  width={400}
+                  height={500}
+                  className="w-full object-cover"
+                />
+              </div>
+            )}
             <ul className="mt-3 space-y-2">
               {item.bullets.map((b, i) => (
                 <li
